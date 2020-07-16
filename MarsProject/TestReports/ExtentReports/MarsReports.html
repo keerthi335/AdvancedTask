@@ -1,0 +1,1068 @@
+
+                                        
+
+
+                    <!DOCTYPE html>
+                    <html>
+                        <head>
+                            <!--
+                                ExtentReports Library 2.40.0 | http://relevantcodes.com/extentreports-for-selenium/ | https://github.com/anshooarora/
+                                Copyright (c) 2015, Anshoo Arora (Relevant Codes) | Copyrights licensed under the New BSD License | http://opensource.org/licenses/BSD-3-Clause
+                                Documentation: http://extentreports.relevantcodes.com 
+                            -->
+                            <meta charset='UTF-8' /> 
+                            <meta name='description' content='ExtentReports (by Anshoo Arora) is a reporting library for automation testing for .NET and Java. It creates detailed and beautiful HTML reports for modern browsers. ExtentReports shows test and step summary along with dashboards, system and environment details for quick analysis of your tests.' />
+                            <meta name='robots' content='noodp, noydir' />
+                            <meta name='viewport' content='width=device-width, initial-scale=1' />
+                            <meta name='extentx' id='extentx' />
+
+                            <title>
+Mars Project Reports                            </title>
+
+                            <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+                            <link href='https://cdn.rawgit.com/anshooarora/extentreports/97fc3fe7f55cba86a4f5b6ff9a2bb80de3e4867c/cdn/extent.css' type='text/css' rel='stylesheet' />
+
+                            <style>
+
+        
+                                  </style>
+                        </head>
+                        <body class='extent standard hide-overflow'>
+                            <!-- nav -->
+                            <nav>
+                                <div class='logo-container'>
+                                    <a class='logo-content' href='http://extentreports.relevantcodes.com'>
+                                        <span>ExtentReports</span>
+                                    </a>
+                                    <a href='#' data-activates='slide-out' class='button-collapse hide-on-large-only'><i class='mdi-navigation-apps'></i></a>
+                                </div>
+
+                                <!-- sidenav -->
+                                <ul id='slide-out' class='side-nav fixed'>
+                                    <li class='analysis waves-effect active'><a href='#!' class='test-view' onclick='_updateCurrentStage(0)'><i class='mdi-action-dashboard'></i>Test Details</a></li>
+                                                                        <li class='analysis waves-effect'><a href='#!' class='dashboard-view'><i class='mdi-action-track-changes'></i></i>Analysis</a></li>
+                                </ul>
+                                <!-- /sidenav -->
+
+                                <span class='report-name'>Advanced SpecFlow Reports </span> <span class='report-headline'> QA Environment </span>
+
+                                <!-- navright -->
+                                <ul class='right hide-on-med-and-down nav-right'>
+                                    <li class='theme-selector' alt='Click to toggle dark theme.' title='Click to toggle dark theme.'>
+                                        <i class='mdi-hardware-desktop-windows'></i>
+                                    </li>
+                                    <li>
+                                        <span class='suite-started-time'>2020-07-16 16:17:26</span>
+                                    </li>
+                                    <li>
+                                        <span>v2.41.0</span>
+                                    </li>
+                                </ul>
+                                <!-- /navright -->
+                            </nav>
+                            <!-- /nav -->
+
+                            <div class='container'>
+                                <!-- dashboard -->
+                                <div id='dashboard-view' class='row'>
+                                    <div class='time-totals'>
+                                        <div class='col l2 m4 s6'>
+                                            <div class='card suite-total-tests'> 
+                                                <span class='panel-name'>Total Tests</span> 
+                                                <span class='total-tests'> <span class='panel-lead'></span> </span> 
+                                            </div> 
+                                        </div>
+                                        <div class='col l2 m4 s6'>
+                                            <div class='card suite-total-steps'> 
+                                                <span class='panel-name'>TotalSteps</span> 
+                                                <span class='total-steps'> <span class='panel-lead'></span> </span> 
+                                            </div> 
+                                        </div>
+                                        <div class='col l4 m4 s12'>
+                                            <div class='card suite-time'> 
+                                                <span class='panel-name'>Total Time Taken</span> 
+                                                <span class='suite-total-time-taken panel-lead'>0h 0m 20s+58ms</span> 
+                                            </div> 
+                                        </div>
+                                        <div class='col l2 m6 s6 suite-start-time'>
+                                            <div class='card green-accent'> 
+                                                <span class='panel-name'>Start</span> 
+                                                <span class='panel-lead suite-started-time'>2020-07-16 16:17:26</span> 
+                                            </div> 
+                                        </div>
+                                        <div class='col l2 m6 s6 suite-end-time'>
+                                            <div class='card pink-accent'> 
+                                                <span class='panel-name'>End</span> 
+                                                <span class='panel-lead suite-ended-time'>2020-07-16 16:17:46</span> 
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <div class='charts'>
+                                        <div class='col s12 m6 l4 fh'> 
+                                            <div class='card-panel'> 
+                                                <div>
+                                                    <span class='panel-name'>Tests View</span>
+                                                </div> 
+                                                <div class='panel-setting modal-trigger test-count-setting right'>
+                                                    <a href='#test-count-setting'><i class='mdi-navigation-more-vert text-md'></i></a>
+                                                </div> 
+                                                <div class='chart-box'>
+                                                    <canvas class='text-centered' id='test-analysis'></canvas>
+                                                </div> 
+                                                <div>
+                                                    <span class='weight-light'><span class='t-pass-count weight-normal'></span> test(s) passed</span>
+                                                </div> 
+                                                <div>
+                                                    <span class='weight-light'><span class='t-fail-count weight-normal'></span> test(s) failed, <span class='t-others-count weight-normal'></span> others</span>
+                                                </div> 
+                                            </div> 
+                                        </div> 
+                                        <div class='col s12 m6 l4 fh'> 
+                                            <div class='card-panel'> 
+                                                <div>
+                                                    <span class='panel-name'>StepsView</span>
+                                                </div> 
+                                                <div class='panel-setting modal-trigger step-status-filter right'>
+                                                    <a href='#step-status-filter'><i class='mdi-navigation-more-vert text-md'></i></a>
+                                                </div> 
+                                                <div class='chart-box'>
+                                                    <canvas class='text-centered' id='step-analysis'></canvas>
+                                                </div> 
+                                                <div>
+                                                    <span class='weight-light'><span class='s-pass-count weight-normal'></span> step(s) passed</span>
+                                                </div> 
+                                                <div>
+                                                    <span class='weight-light'><span class='s-fail-count weight-normal'></span> step(s) failed, <span class='s-others-count weight-normal'></span> others</span>
+                                                </div> 
+                                            </div> 
+                                        </div>
+                                        <div class='col s12 m12 l4 fh'> 
+                                            <div class='card-panel'> 
+                                                <span class='panel-name'>Pass Percentage</span> 
+                                                <span class='pass-percentage panel-lead'></span> 
+                                                <div class='progress light-blue lighten-3'> 
+                                                    <div class='determinate light-blue'></div> 
+                                                </div> 
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <div class='system-view'>
+                                        <div class='col l4 m12 s12'>
+                                            <div class='card-panel'>
+                                                <span class='label info right outline'>Environment</span>
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Param</th>
+                                                            <th>Value</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>User Name</td>
+                                                                <td>kranthi</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Machine Name</td>
+                                                                <td>KRANTHI-PC</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Domain</td>
+                                                                <td>kranthi-PC</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>OS</td>
+                                                                <td>Win32NT 10.0.18363.0</td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /dashboard -->
+
+                                <!-- tests -->
+                                <div id='test-view' class='row _addedTable'>
+                                    <div class='col _addedCell1'>
+                                        <div class='contents'>
+                                            <div class='card-panel heading'>
+                                                <h5>Tests</h5>
+                                            </div>
+                                            <div class='card-panel filters'>
+                                                <div>
+                                                    <a data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#' class='dropdown-button button tests-toggle'><i class='mdi-action-subject icon'></i></a>
+                                                    <ul id='tests-toggle' class='dropdown-content'>
+                                                        <li class='pass'><a href='#!'>Pass</a></li>
+                                                        <li class='fail'><a href='#!'>Fail</a></li>
+                                                                                                                                                                        <li class='skip'><a href='#!'>Skip</a></li>
+                                                        <li class='divider'></li>
+                                                        <li class='clear'><a href='#!'>Clear Filters</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div>
+                                                    <a id='clear-filters' alt='Clear Filters' title='Clear Filters'><i class='mdi-navigation-close icon'></i></a>
+                                                </div>
+                                                <div>&nbsp;&middot;&nbsp;</div>
+                                                <div>
+                                                    <a id='enableDashboard' alt='Enable Dashboard' title='Enable Dashboard'><i class='mdi-action-track-changes icon'></i></a>
+                                                </div> 
+                                                <div>
+                                                    <a id='refreshCharts' alt='Refresh Charts on Filters' title='Refresh Charts on Filters' class='enabled'><i class='mdi-navigation-refresh icon'></i></i></a>
+                                                </div>
+                                                <div>&nbsp;&middot;</div>
+                                                <div class='search' alt='Search Tests' title='Search Tests'>
+                                                    <div class='input-field left'>
+                                                        <input id='searchTests' type='text' class='validate' placeholder='Search Tests...'>
+                                                    </div>
+                                                    <i class='mdi-action-search icon'></i>
+                                                </div>
+                                            </div>
+                                            <div class='card-panel no-padding-h no-padding-v'>
+                                                <div class='wrapper'>
+                                                    <ul id='test-collection' class='test-collection'>
+                                                            <li class='collection-item test displayed active pass ' extentid='2974f439-fb6e-4f27-a7eb-3d92f066b366'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task                            </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-13 15:21:51</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-13 15:21:51</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>15:21:51</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_13-21-2020_2151.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='40844b1f-2f12-4330-bad7-67ba5e26116e'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task                           </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-13 15:26:34</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-13 15:26:34</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>15:26:34</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_13-26-2020_2634.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='48701873-a573-474b-9244-30d9e09a5a4a'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task                          </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-13 16:52:47</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-13 16:52:47</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:52:47</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_13-52-2020_5247.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='6a36c959-8c0f-4c97-8bff-65bc1a823f9c'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task                         </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-13 17:03:58</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-13 17:03:58</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>17:03:58</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_13-03-2020_358.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='7d6d49f8-663a-47d1-bc2d-c251c8397d9c'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task                        </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-13 17:05:14</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-13 17:05:14</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>17:05:14</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_13-05-2020_514.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='db8673fb-3822-44c2-90ff-65bd6809be53'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task                       </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-13 17:06:42</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-13 17:06:42</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>17:06:42</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_13-06-2020_642.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='f57467db-b06e-4802-966e-9b5b6ab799e9'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task                      </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-13 17:10:40</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-13 17:10:40</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>17:10:40</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_13-10-2020_1040.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='2904fc78-a1e0-4a8e-9eef-189aa78a0b82'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task                     </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-13 17:14:42</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-13 17:14:42</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>17:14:42</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_13-14-2020_1442.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='390ed44d-bb16-4636-8682-db2dfa9ba697'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task                    </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-14 14:57:07</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-14 14:57:07</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>14:57:07</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_14-57-2020_5706.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='33ebddd1-5239-4f09-bfbf-55738506946b'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task                   </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 13:58:33</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 13:58:33</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>13:58:33</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-58-2020_5830.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='a7b8aa2b-4e08-40e7-a224-3fffbacb860f'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task                  </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 14:21:21</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 14:21:21</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>14:21:21</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-21-2020_2120.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='a59f2173-4294-4c55-ac78-5ff3387add83'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task                 </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 14:22:12</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 14:22:12</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>14:22:12</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-22-2020_2212.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='3a21423b-cbaf-40fb-ae94-0885ca0b1bc9'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task                </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 14:41:48</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 14:41:48</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>14:41:48</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-41-2020_4147.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='3730e868-8129-438e-aa85-2a3a7488e061'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task               </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 14:42:58</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 14:42:58</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>14:42:58</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-42-2020_4258.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='6953149f-c4ac-4e9d-9ffd-46ed12168572'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task              </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 14:44:14</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 14:44:14</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>14:44:14</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-44-2020_4414.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='8197e505-8d9b-4d90-94b8-74929c972b70'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task             </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 15:08:38</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 15:08:38</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>15:08:38</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-08-2020_837.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='3afee8a6-99b9-44f8-b6dc-d3a3e4213919'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task            </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 15:16:13</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 15:16:13</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>15:16:13</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-16-2020_1613.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='026450aa-3481-4a47-9654-66e9b29b2efb'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task           </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 15:19:24</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 15:19:24</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>15:19:24</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-19-2020_1924.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='293631a5-37f4-49a4-ac4e-1a328f4b4884'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task          </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 15:20:25</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 15:20:25</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>15:20:25</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-20-2020_2025.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='c4599fc2-7894-48c0-984c-ea250b9e72b4'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task         </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 15:22:50</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 15:22:50</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>15:22:50</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-22-2020_2250.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='4dba0495-5adc-416c-abcb-485e9ee76dc8'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task        </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 15:23:23</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 15:23:23</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>15:23:23</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-23-2020_2323.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='bba90bd1-31f2-4c1e-a5f6-6ee227e85644'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task       </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 15:32:03</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 15:32:03</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>15:32:03</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-32-2020_3203.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='31c17b3b-6e74-4305-b1d0-03f76690d5d7'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task      </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 15:34:59</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 15:34:59</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>15:34:59</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-34-2020_3459.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='be271b67-43bd-4f91-80f8-27a54dec31cb'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task     </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 15:40:09</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 15:40:09</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>15:40:09</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-40-2020_4009.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='55202531-773a-447d-bedb-c845a6696250'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task    </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 16:06:12</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 16:06:12</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:06:12</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-06-2020_612.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='80ae8d1b-5dbd-41c5-b0ae-78f2e261e7f7'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task   </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 16:10:08</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 16:10:08</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:10:08</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-10-2020_1008.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='04bcb464-4736-40bd-876c-9ed2368549e7'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task  </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 16:13:17</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 16:13:17</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status pass'><i class='mdi-action-check-circle'></i></td><td class='timestamp'>16:13:17</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-13-2020_1317.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li>                                                            <li class='collection-item test displayed active pass ' extentid='fb8804ab-e4ce-4603-aa17-455c6762ef81'>
+                                                                <div class='test-head'>
+                                                                    <span class='test-name'>Mars Reports - Advanced task </span>
+                                                                    <span class='test-status right label capitalize outline pass'>pass</span>
+                                                                    <span class='category-assigned hide '></span>
+                                                                </div>
+                                                                <div class='test-body'>
+                                                                    <div class='test-info'>
+                                                                        <span title='Test started time' alt='Test started time' class='test-started-time label green lighten-2 text-white'>2020-07-16 16:17:45</span>
+                                                                        <span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-2 text-white'>2020-07-16 16:17:45</span>
+                                                                        <span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 0s+0ms</span>
+                                                                    </div>
+                                                                    <div class='test-desc'></div>
+                                                                    <div class='test-attributes'>
+                                                                                                                                            </div>
+                                                                    <div class='test-steps'>
+                                                                            <table class='bordered table-results'>
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Status</th>
+                                                                                        <th>Timestamp</th>
+                                                                                        <th>Details</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                        <tr>
+                                                                                            <td class='status info'><i class='mdi-action-info-outline'></i></td><td class='timestamp'>16:17:45</td>                                                                                            <td class='step-details'>Image example: G:\Testing\Internship\Advanced Tasks\Automation Tasks\marsframework\MarsProject\TestReports\MyScreenshots\Report_16-17-2020_1745.jpeg</td>
+                                                                                        </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div></div></li></ul></div></div></div></div><div id='test-details-wrapper' class='col _addedCell2'><div class='contents'><div class='card-panel details-view'><h5 class='details-name'></h5><div class='step-filters right'><span class='info' alt='info' title='info'><i class='mdi-action-info-outline'></i></span> <span class='pass' alt='pass' title='pass'><i class='mdi-action-check-circle'></i></span> <span class='fail' alt='fail' title='fail'><i class='mdi-navigation-cancel'></i></span> <span class='fatal' alt='fatal' title='fatal'><i class='mdi-navigation-cancel'></i></span> <span class='error' alt='error' title='error'><i class='mdi-alert-error'></i></span> <span class='warning' alt='warning' title='warning'><i class='mdi-alert-warning'></i></span> <span class='skip' alt='skip' title='skip'><i class='mdi-content-redo'></i></span> <span class='clear-step-filter' alt='Clear filters' title='Clear filters'><i class='mdi-content-clear'></i></span></div><div class='details-container'></div></div></div></div></div><!-- /tests --><!-- categories --><!-- /categories --><!-- exceptions --><!-- /exceptions --><!-- testrunner logs --><!-- /testrunner logs --></div><!-- modals --><div id='test-count-setting' class='modal bottom-sheet'> <div class='modal-content'> <h5>Configure Tests Count Setting</h5> <input name='test-count-setting' type='radio' id='parentWithoutNodes' class='with-gap'> <label for='parentWithoutNodes'>Parent Tests Only (Does not include child nodes in counts)</label> <br> <input name='test-count-setting' type='radio' id='parentWithoutNodesAndNodes' class='with-gap'> <label for='parentWithoutNodesAndNodes'>Parent Tests Without Child Tests + Child Tests</label> <br> <input name='test-count-setting' type='radio' id='childNodes' class='with-gap'> <label for='childNodes'>Child Tests Only</label> </div> <div class='modal-footer'> <a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> </div> </div> <div id='step-status-filter' class='modal bottom-sheet'> <div class='modal-content'> <h5>Select Status</h5> <input checked class='filled-in' type='checkbox' id='step-dashboard-filter-pass'> <label for='step-dashboard-filter-pass'>Pass</label> <br> <input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fail'> <label for='step-dashboard-filter-fail'>Fail</label> <br> <input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fatal'> <label for='step-dashboard-filter-fatal'>Fatal</label> <br> <input checked class='filled-in' type='checkbox' id='step-dashboard-filter-error'> <label for='step-dashboard-filter-error'>Error</label> <br> <input checked class='filled-in' type='checkbox' id='step-dashboard-filter-warning'> <label for='step-dashboard-filter-warning'>Warning</label> <br> <input checked class='filled-in' type='checkbox' id='step-dashboard-filter-skip'> <label for='step-dashboard-filter-skip'>Skipped</label> <br> <input checked class='filled-in' type='checkbox' id='step-dashboard-filter-info'> <label for='step-dashboard-filter-info'>Info</label> <br> <input checked class='filled-in' type='checkbox' id='step-dashboard-filter-unknown'> <label for='step-dashboard-filter-unknown'>Unknown</label> </div> <div class='modal-footer'> <a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> </div></div><!-- /modals --><script src='https://cdn.rawgit.com/anshooarora/extentreports/051be9b627c84bde3591f7e6268e8b70e334a760/cdn/extent.js' type='text/javascript'></script><script>$(document).ready(function() { $('.logo span').html('ExtentReports'); });</script><script>
+        $(document).ready(function() {
+          
+        });
+      </script></body></html>
